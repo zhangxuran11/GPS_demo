@@ -6,17 +6,7 @@
 #include "qextserialport/src/qextserialport.h"
 
 #include"gprmc.h"
-static void QextSerialPort_init(QextSerialPort *port)
-{
-    port->setDtr();
-    port->setBaudRate(BAUD9600);
-    port->setFlowControl(FLOW_OFF);
-    port->setParity(PAR_NONE);
-    port->setDataBits(DATA_8);
-    port->setStopBits(STOP_1);
-    port->setTimeout(300);
 
-}
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
