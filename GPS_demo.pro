@@ -8,15 +8,12 @@ QT       += core gui
 
 TARGET = GPS_demo
 TEMPLATE = app
-include(qextserialport/src/qextserialport.pri)
-
+include(GPS_Driver/GPS_Driver.pri)
 SOURCES += main.cpp\
         mainwindow.cpp \
-    gprmc.cpp \
 
 
 HEADERS  += mainwindow.h \
-    gprmc.h \
 
 
 FORMS    += mainwindow.ui
