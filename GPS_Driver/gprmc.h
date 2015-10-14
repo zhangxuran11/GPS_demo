@@ -9,6 +9,7 @@ class GPRMC
 public:
     bool isValid()const{return _isValid;}
     QDateTime dateTime;
+    double speed;
     char state;
     qreal latitude;
     qreal longitude;

@@ -11,6 +11,7 @@ void GPRMC::clear()
 {
     _isValid = false;
     state = ' ';
+    speed = 0;
     latitude = 0;
     longitude = 0;
     dateTime.setTime(QTime::fromString("000000.000","hhmmss.sss"));
@@ -44,8 +45,9 @@ void GPRMC::load(const QString& bytes)
     latitude = (int)latitude/100 + fmod(latitude,100)/60;
     longitude = (int)longitude/100 + fmod(longitude,100)/60;
 
-    latitude += 22.5060938;
-    longitude += -15.1757683;
+//    latitude += 22.5060938;
+//    longitude += -15.1757683;
+    speed = strList[7].toDouble()*1.852;
 }
 quint8 GPRMC::checkXor(QByteArray origin)
 {
@@ -61,6 +63,8 @@ void  GPRMC::print()const
     qDebug()<<"isValid  :"<<isValid();
     qDebug()<<"state    :"<<state;
     qDebug("latitude :%.7f longitude :%.7f",latitude,longitude);
+    qDebug("speed :%.7f",speed);
+    qDebug()<<"date time : "<<dateTime.toString();
 //    qDebug("latitude :%.5f longitude :%.5f",fmod(latitude,100),fmod(longitude,100));
 //    qDebug("latitude :%d longitude :%d",abs((int)latitude/100*100),abs((int)longitude/100*100));
 //    qDebug("latitude :%.7f longitude :%.7f",(int)latitude/100 + fmod(latitude,100)/60,(int)longitude/100 + fmod(longitude,100)/60);
